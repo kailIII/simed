@@ -6,6 +6,7 @@ package model;
 
 import entities.annotations.View;
 import entities.annotations.Views;
+
 import java.io.File;
 import java.io.Serializable;
 import java.text.Format;
@@ -13,10 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+
+import config.configuracao;
 import relatorio.GeradorRelatorio;
 import relatorio.Relatorio;
 import relatorio.RelatorioBPA;
@@ -61,7 +65,7 @@ public class GerarRelatorioBPA implements Serializable {
         GeradorRelatorio gerador = new GeradorRelatorio();
         gerador.gerarRBPA((ArrayList<Relatorio>) results,  ubs);
         
-        File file = new File("C:/Relatorios/relatorioBPA.pdf");
+        File file = new File(configuracao.CLASSPATH + "relatorios/relatorioBPA.pdf");
         //file = new File("/home/diogenes/Documentos/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Diogenes
         //file = new File("/home/pedro/Relatorios/relatorioBPA.pdf"); // Pedro
         //file = new File("/home/'user'/Documentos/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Linux

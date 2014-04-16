@@ -14,6 +14,9 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import config.configuracao;
+
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.Format;
@@ -21,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import model.UnidadeBasicaDeSaude;
 
 /**
@@ -33,7 +37,7 @@ public class GeradorRelatorio {
         Document doc = null;
         OutputStream os = null;
         try {
-            os = new FileOutputStream("C:/Relatorios/CartaoDaMulher.pdf");
+            os = new FileOutputStream(configuracao.CLASSPATH + "relatorios/CartaoDaMulher.pdf");
             //os = new FileOutputStream("/home/diogenes/Documentos/Relatorios/CartaoDaMulher.pdf"); //Diogenes
             //os = new FileOutputStream("/home/'user'/Documentos/Relatorios/CartaoDaMulher.pdf""); //Linux
             //os = new FileOutputStream("C:/Relatorios/CartaoDaMulher.pdf"); //Windows
@@ -56,7 +60,7 @@ public class GeradorRelatorio {
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
 
-            Image img = Image.getInstance("C:/Relatorios/logo.png");
+            Image img = Image.getInstance(configuracao.CLASSPATH + "relatorios/logo.png");
             //Image img = Image.getInstance("/home/diogenes/Documentos/Siso/web/img/LogoTop.png"); //Diogenes
             //Image img = Image.getInstance("/home/'user'/Documentos/Siso/web/img/logo.png"); //Linux
             //Image img = Image.getInstance("C:/Relatorios/logo.png"); //Windows
@@ -226,7 +230,7 @@ public class GeradorRelatorio {
         Document doc = null;
         OutputStream os = null;
         try {
-            os = new FileOutputStream("C:/Relatorios/relatorioBPA.pdf");
+            os = new FileOutputStream(configuracao.CLASSPATH + "relatorios/relatorioBPA.pdf");
             //os = new FileOutputStream("/home/diogenes/Documentos/Relatorios/CartaoDaMulher.pdf"); //Diogenes
             //os = new FileOutputStream("/home/'user'/Documentos/Relatorios/CartaoDaMulher.pdf""); //Linux
             //os = new FileOutputStream("C:/Relatorios/CartaoDaMulher.pdf"); //Windows
@@ -250,7 +254,7 @@ public class GeradorRelatorio {
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
 
-            Image img = Image.getInstance("C:/Relatorios/logo.png");
+            Image img = Image.getInstance(configuracao.CLASSPATH + "relatorios/logo.png");
             //Image img = Image.getInstance("/home/diogenes/Documentos/Siso/web/img/LogoTop.png"); //Diogenes
             //Image img = Image.getInstance("/home/'user'/Documentos/Siso/web/img/logo.png"); //Linux
             //Image img = Image.getInstance("C:/Relatorios/logo.png"); //Windows

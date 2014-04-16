@@ -7,12 +7,16 @@ package model;
 import entities.annotations.ActionDescriptor;
 import entities.annotations.View;
 import entities.annotations.Views;
+
 import java.io.File;
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+
+import config.configuracao;
 import relatorio.GeradorRelatorio;
 import relatorio.Relatorio;
 import relatorio.RelatorioCartaoMulher;
@@ -50,7 +54,7 @@ public class GerarCM implements Serializable {
         gerador.gerarCartao(relatorio);
 
         File file;
-        file = new File("C:/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf");
+        file = new File(configuracao.CLASSPATH + "relatorios/Cartao_" + atendimento.getPaciente() + ".pdf");
         //file = new File("/home/diogenes/Documentos/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Diogenes
         //file = new File("/home/'user'/Documentos/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Linux
         //file = new File("C:/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Windows
