@@ -1,0 +1,510 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:e="http://entities.br"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="subheader">
+                <h:form>
+                    <rich:toolBar>
+                        
+                        <rich:dropDownMenu value="Menu">
+
+<!--
+                                <rich:menuItem title="Início" value="Início">
+                                    <h:outputLink   value="main.jsf"></h:outputLink>
+                                </rich:menuItem>
+-->
+                                <rich:menuItem rendered="#{empty context.currentUser()}">
+                                    <e:go label="Login" viewname="security.Usuario@Login" page="main.jsf"/>
+                                </rich:menuItem>
+
+
+                                <rich:menuItem  rendered="#{not empty context.currentUser()}">
+                                    <e:go label="Sair" viewname="security.Usuario@Logout" page="main.jsf"/>
+                                </rich:menuItem>
+                            </rich:dropDownMenu>
+
+                            <rich:dropDownMenu value="Paciente" rendered='#{context.currentUser().hasRoles("Administrador","Atendente")}'>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Adicionar Pacientes" />
+                                        <f:param name="view" value="model.Paciente@Pacientes" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Adicionar Prioridade à Pacientes" />
+                                        <f:param name="view" value="model.Paciente@DefinirPrioridade" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimentos à Paciente" />
+                                        <f:param name="view" value="model.Atendimento@Atendimentos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimento do Médico" />
+                                        <f:param name="view" value="model.AtendimentoMedico@AtendimentoMedico" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimento do Enfermeiro" />
+                                        <f:param name="view" value="model.AtendimentoEnfermeira@AtendimentoEnfermeira" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimento do Tecnico de Enfermagem" />
+                                        <f:param name="view" value="model.AtendimentoTecnicoDeEnfermagem@AtendimentoTecnicoDeEnfermagem" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Encaminhamento de Paciente" />
+                                        <f:param name="view" value="model.Encaminhamento@Encaminhamentos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Familias Assistidas" />
+                                        <f:param name="view" value="model.CadastroFamilia@CadastroFamilia" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Paciente" rendered='#{context.currentUser().hasRoles("Medico","Enfermeiro")}'>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Adicionar Prioridade à Pacientes" />
+                                        <f:param name="view" value="model.Paciente@DefinirPrioridade" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimentos à Paciente" />
+                                        <f:param name="view" value="model.Atendimento@Atendimentos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Encaminhamento de Paciente" />
+                                        <f:param name="view" value="model.Encaminhamento@Encaminhamentos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Paciente" rendered='#{context.currentUser().hasRoles("AgenteDeSaude")}'>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Adicionar Pacientes" />
+                                        <f:param name="view" value="model.Paciente@Pacientes" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Familias Assistidas" />
+                                        <f:param name="view" value="model.CadastroFamilia@CadastroFamilia" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Atendimento Específico" rendered='#{context.currentUser().hasRoles("Administrador","Atendente","Medico","Enfermeiro")}'>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Exame de Mamografia" />
+                                        <f:param name="view" value="model.ExameDeMamografia@exameDeMamografia" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Saúde Da Mulher" />
+                                        <f:param name="view" value="model.SaudeDaMulher@SaudeDaMulher" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimento à Mulher" />
+                                        <f:param name="view" value="model.AtendimentoAMulher@AtendimentoMulher" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Gestante" />
+                                        <f:param name="view" value="model.AcompanhamentoDeGestantes@listaDeVerificacaoDaUsuaria" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Diabeticos" />
+                                        <f:param name="view" value="model.AcompanhamentoDeDiabeticos@acompanhamentoDeDiabeticos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Hipertensos" />
+                                        <f:param name="view" value="model.AcompanhamentoDeHipertensos@acompanhamentoDeHipertensos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Hanseniase" />
+                                        <f:param name="view" value="model.AcompanhamentoHANS@AcompanhamentoHANS" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Tuberculose" />
+                                        <f:param name="view" value="model.AcompanhamentoTB@AcompanhamentoTB" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificação de Hanseniase" />
+                                        <f:param name="view" value="model.Hanseniase@Hanseniase" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificação de Tuberculose" />
+                                        <f:param name="view" value="model.Tuberculose@Tuberculose" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificação de Obito" />
+                                        <f:param name="view" value="model.NotificacaoObito@NotificacaoObito" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Nascidos Vivos" />
+                                        <f:param name="view" value="model.NascidosVivos@NascidosVivos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Atendimento Específico" rendered='#{context.currentUser().hasRoles("TecnicoDeEnfermagem","AgenteDeSaude")}'>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Mulher" />
+                                        <f:param name="view" value="model.AtendimentoAMulher@AtendimentoMulher" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Gestante" />
+                                        <f:param name="view" value="model.AcompanhamentoDeGestantes@listaDeVerificacaoDaUsuaria" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Diabeticos" />
+                                        <f:param name="view" value="model.AcompanhamentoDeDiabeticos@acompanhamentoDeDiabeticos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Hipertensos" />
+                                        <f:param name="view" value="model.AcompanhamentoDeHipertensos@acompanhamentoDeHipertensos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Hanseniase" />
+                                        <f:param name="view" value="model.AcompanhamentoHANS@AcompanhamentoHANS" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Acompanhamento à Tuberculose" />
+                                        <f:param name="view" value="model.AcompanhamentoTB@AcompanhamentoTB" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificação de Hanseniase" />
+                                        <f:param name="view" value="model.Hanseniase@Hanseniase" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificação de Tuberculose" />
+                                        <f:param name="view" value="model.Tuberculose@Tuberculose" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificação de Obito" />
+                                        <f:param name="view" value="model.NotificacaoObito@NotificacaoObito" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Nascidos Vivos" />
+                                        <f:param name="view" value="model.NascidosVivos@NascidosVivos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Funcionários" rendered='#{context.currentUser().hasRoles("Administrador")}'>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Especialidades Médicas" />
+                                        <f:param name="view" value="model.EspecialidadeMedica@EspecialidadesMedicas" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Médicos" />
+                                        <f:param name="view" value="model.Medico@Medicos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Enfermeiros" />
+                                        <f:param name="view" value="model.Enfermeiro@Enfermeiro" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Técnico de Enfermagem" />
+                                        <f:param name="view" value="model.TecnicoDeEnfermagem@TecnicoDeEnfermagem" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Agentes de Saúde" />
+                                        <f:param name="view" value="model.AgenteDeSaude@AgentesdeSaude" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Unidade de Saúde" rendered='#{context.currentUser().hasRoles("Administrador")}'>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Unidades Básica de Saúde" />
+                                        <f:param name="view" value="model.UnidadeBasicaDeSaude@UnidadeBasicaDeSaude" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Vincular Médico à UBS" />
+                                        <f:param name="view" value="model.VincularMedicoUBS@VincularMedicoUBS" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Vincular Enfermeiro à UBS" />
+                                        <f:param name="view" value="model.VincularEnfermeiroUBS@VincularEnfermeiroUBS" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Vincular Técnico de Enfermagem à UBS" />
+                                        <f:param name="view" value="model.VincularTecnicoEnfermagemUBS@VincularTecnicoEnfermagemUBS" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Relatórios" rendered='#{context.currentUser().hasRoles("Administrador","Atendente")}'>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Imprimir Cartão da Mulher" />
+                                        <f:param name="view" value="model.GerarCM@GerarCartaoMulher" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Gerar Relatório de BPA" />
+                                        <f:param name="view" value="model.GerarRelatorioBPA@GerarRelatorioBPA" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                            </rich:dropDownMenu>
+                            
+                            <rich:dropDownMenu value="Itens" rendered='#{context.currentUser().hasRoles("Administrador")}'>
+
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Especialidades" />
+                                        <f:param name="view" value="model.Especialidade@Especialidades" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Atendimento De Medico e Enfermeiro" />
+                                        <f:param name="view" value="model.AtendimentoDeMedicoEnfermeiro@AtendimentoDeMedicoEnfermeiro" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Exames Complementares" />
+                                        <f:param name="view" value="model.ExamesComplementares@ExamesComplementares" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Procedimentos" />
+                                        <f:param name="view" value="model.Procedimentos@Procedimentos" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Notificações" />
+                                        <f:param name="view" value="model.Notificacoes@Notificacoes" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+                                
+                                <rich:menuItem >                              
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Medicamentos" />
+                                        <f:param name="view" value="model.Medicamento@Medicamento" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+
+                            </rich:dropDownMenu>
+
+                            <rich:dropDownMenu value="Cadastro de Usuários" rendered='#{context.currentUser().hasRoles("Super","Administrador")}'>
+                                
+                                <rich:menuItem >
+                                    <h:outputLink value="main.jsf">
+                                        <h:outputText value="Cadastro de Usuários" />
+                                        <f:param name="view" value="security.Usuario@CadastroDeUsuarios" />
+                                    </h:outputLink>
+                                </rich:menuItem>
+
+                            </rich:dropDownMenu>
+
+                       <!--<rich:dropDownMenu value="#{i18n['menu.label.main']}">
+                            <e:menuItems/>
+                        </rich:dropDownMenu>
+                       
+                       <rich:dropDownMenu value="#{i18n['menu.label.setup']}">
+                            <rich:menuItem value="Tema :">
+                                <e:themes>
+                                    <f:selectItem itemLabel="Violet Rays" itemValue="violetRays" />
+                                </e:themes>
+                            </rich:menuItem>
+                            <rich:menuItem value="Skin :">
+                                <e:skins/>
+                            </rich:menuItem>
+                        </rich:dropDownMenu>
+                        -->
+                    </rich:toolBar>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="sidebar">
+                <h:panelGroup>
+                    <ul>
+                        <li>
+                            <h2>#{i18n['menu.label.main']}</h2>
+                            <ul class="blocklist">
+                                <e:liMenuItems/>
+                            </ul>
+                        </li>
+
+                        <!--  <li>
+                              <h2>#{i18n['menu.label.setup']}</h2>
+                              <ul class="blocklist">
+                                  <h:form>
+                                      <li>
+                                          <e:themes>
+                                              <f:selectItem itemLabel="Violet Rays" itemValue="violetRays" />
+                                          </e:themes>
+                                      </li>
+                                      <li><e:skins/></li>
+                                  </h:form>
+                              </ul>
+                          </li>-->
+                    </ul>
+                </h:panelGroup>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:panelGroup rendered="#{empty autoEntityBackBean.entity}">
+                    <br/><br/>
+                    <div class="post">
+                        <center>
+                            <h1 class="title">Bem vindo ao</h1>
+                            <p><b><i>Sistema de Atenção Básica Quixadá</i></b></p>
+                            <h:graphicImage url="img/logo.png"/>
+                            <div class="entry">
+
+                            </div>
+                        </center>
+                    </div>
+                    <br/><br/>
+                </h:panelGroup>
+
+                <e:view />
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>
