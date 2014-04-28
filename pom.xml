@@ -12,6 +12,8 @@
 		<projeto>simed</projeto>
 	</properties>
 
+
+
 	<!-- In Project repository -->
 	<repositories>
 		<repository>
@@ -23,6 +25,12 @@
 			<id>jboss-releases</id>
 			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
 		</repository>
+
+		<repository>
+			<id>entities</id>
+			<url>https://dl.dropboxusercontent.com/u/1477113/maven/</url>
+		</repository>
+
 	</repositories>
 
 	<dependencies>
@@ -141,6 +149,13 @@
 			<artifactId>freecssTemplates</artifactId>
 			<version>1.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>entities</groupId>
+			<artifactId>entities-themes</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>${projeto}</finalName>
