@@ -36,7 +36,7 @@ public class ConnectionFactory {
             String DRIVER = "org.apache.derby.jdbc.ClientDriver";
             Class.forName(DRIVER);
             System.out.println("Conectando ao banco do Sistema de Atenção Básica...");         
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/siabs", USERNAME, PASSWORD);      
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/simed", USERNAME, PASSWORD);      
         } catch (ClassNotFoundException e) {
             System.out.println("erro" + e + "\n\n");
             throw new SQLException(e.getMessage());
