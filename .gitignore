@@ -1,1 +1,9 @@
-/target
+.metadata
+.settings
+.classpath
+.project
+target
+*.class
+*.war
+*.ear
+*.log
