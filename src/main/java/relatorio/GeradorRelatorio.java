@@ -60,7 +60,7 @@ public class GeradorRelatorio {
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
 
-            Image img = Image.getInstance(configuracao.CLASSPATH + "relatorios/logo.png");
+            Image img = Image.getInstance(configuracao.CLASSPATH + "relatorios/img/logo.png");
             //Image img = Image.getInstance("/home/diogenes/Documentos/Siso/web/img/LogoTop.png"); //Diogenes
             //Image img = Image.getInstance("/home/'user'/Documentos/Siso/web/img/logo.png"); //Linux
             //Image img = Image.getInstance("C:/Relatorios/logo.png"); //Windows
@@ -254,7 +254,7 @@ public class GeradorRelatorio {
             cabecalho.setWidths(widths);
             cabecalho.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
 
-            Image img = Image.getInstance(configuracao.CLASSPATH + "relatorios/logo.png");
+            Image img = Image.getInstance(configuracao.CLASSPATH + "relatorios/img/logo.png");
             //Image img = Image.getInstance("/home/diogenes/Documentos/Siso/web/img/LogoTop.png"); //Diogenes
             //Image img = Image.getInstance("/home/'user'/Documentos/Siso/web/img/logo.png"); //Linux
             //Image img = Image.getInstance("C:/Relatorios/logo.png"); //Windows

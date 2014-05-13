@@ -54,7 +54,7 @@ public class GerarCM implements Serializable {
         gerador.gerarCartao(relatorio);
 
         File file;
-        file = new File(configuracao.CLASSPATH + "relatorios/Cartao_" + atendimento.getPaciente() + ".pdf");
+        file = new File(configuracao.CLASSPATH + "relatorios/CartaoDaMulher.pdf");
         //file = new File("/home/diogenes/Documentos/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Diogenes
         //file = new File("/home/'user'/Documentos/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Linux
         //file = new File("C:/Relatorios/Cartao_" + atendimento.getPaciente() + ".pdf"); //Windows
