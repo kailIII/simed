@@ -1,16 +1,12 @@
-.metadata
+*.metadata
 
-.settings
+*.settings
 
-.classpath
+*.classpath
 
-.project
-target
-*
-.class
-*
-.war
-*
-.ear
-*
-.log
+*.project
+
+*.class
+*.war
+*.ear
+*.log
