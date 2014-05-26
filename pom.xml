@@ -14,7 +14,7 @@
 
 
 
-	<!-- In Project repository -->
+	<!-- In Project repository --> 
 	<repositories>
 		<repository>
 			<id>in-project</id>
