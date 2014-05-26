@@ -4,14 +4,19 @@
  */
 package model;
 
+import entities.annotations.Editor;
 import entities.annotations.PropertyDescriptor;
 import entities.annotations.View;
 import entities.annotations.Views;
+import entities.descriptor.PropertyType;
+
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -39,6 +44,7 @@ import org.hibernate.validator.constraints.NotEmpty;
     @View(name = "Pacientes", title = "Pacientes",
             filters = "Pesquisar Por:[nomePaciente, Ctrl.DAO.filter()]",
             members = "[Dados Pessoais[cns,nomePaciente,sexoPaciente;"
+            + "foto;"
             + "civil,dataDeNascimentoPaciente,profissao;"
             + "naturalidade,nomeDaMae,procedencia;"
             + "categoria];"
@@ -82,7 +88,24 @@ public class Paciente implements Serializable {
         Urbana, Rural, Periurbana, Ignorado
     }
     
-    @Id
+    
+    @Lob
+    @Column (length = 10240)
+    @Editor(propertyType=PropertyType.IMAGE)
+    @PropertyDescriptor (index=7)
+    private byte [] foto;
+    
+    
+    
+    public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
+	@Id
     @NotNull
     @PropertyDescriptor(displayName = "CNS - Cartão Nacional de Saúde", hidden = true)
     private Long cns;
