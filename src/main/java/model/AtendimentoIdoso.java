@@ -44,15 +44,14 @@ import javax.persistence.Temporal;
             + "Exames['Radioterapia:':paciente_radio;'Gestante:':paciente_gestante;'TRH:':paciente_trh],"
             + "Métodos Anticoncepcionais['Nome do Remédio:':nome_remedio;'Tempo de Uso:':tempoUso;'Causa de Interrupção:':causaInterrupcao]];"
             + "Enfermeiros e Médicos["
-            + "[['Início da Vida Sexual:':inicioVidaSexual,'GESTA:':gesta,'PARA:':para,'ABORTO:':aborto];"
-            + "['Última Gravidez:':ultimaGravidez,'Peso:':peso,'Ciclos:':ciclos,'UR:':ur];"
-            + "['Sinusiorragia:':sinusiorragia,'Eletro:':eletro,'Fumante:':fumante,'Hipertensão:':hipertensao,'Diabetes:':diabetes,"
+            + "[;"
+            + "[];"
+            + "['Fumante:':fumante,'Hipertensão:':hipertensao,'Diabetes:':diabetes,"
             + "'Câncer Familiar:':cancerFamiliar,'Quem?':cancer_descricao,'Tipo de Câncer:':tipo_cancer];"
-            + "['PA:':pa,'Outras Doenças:':outras_doencas,'Antecedentes Cirúrgicos:':antecedentesCirurgicos];"
+            + "['Outras Doenças:':outras_doencas,'Antecedentes Cirúrgicos:':antecedentesCirurgicos];"
             + "['DST:':dst, 'Descrição:':dst_descricao]];"
             + "[Exame das Mamas[adicionarSintoma();"
-            + "addAcompanhamentoIdoso<glicose ,pressao , sintomas, removerSintoma()>],"
-            + "Shiler['1 +':shiler_umMais,'1 CL':shiler_umCL;'1 -':shiler_umMenos],Exame de Toque['Descrição:':exame_toque]]]];"
+            + "addAcompanhamentoIdoso< removerSintoma()>]],"
             + "Atendente['ENFERMEIRO:':enfermeiro,'COREN Nº:':coren_enfermeiro;'MÉDICO:':medico,'CRM Nº:':crm_medico]]]",
             template = "@CRUD+@PAGER",
             rows = 1,
@@ -87,7 +86,7 @@ public class AtendimentoIdoso implements Serializable {
         Sim, Não
     }
     
-
+    private String sintomas;
     private Integer glicose; 
     private Integer pressao; 
     private Boolean ignorado;
@@ -391,8 +390,26 @@ public class AtendimentoIdoso implements Serializable {
     public void setAddAcompanhamentoIdoso(List<ADDAcompanhamentoIdoso> addAcompanhamentoIdoso) {
         this.addAcompanhamentoIdoso = addAcompanhamentoIdoso;
     }
+    
+    
 
-    @ActionDescriptor(methodDisabled = "#{not autoEntityBackBean.formInEditMode}")
+    public Integer getGlicose() {
+		return glicose;
+	}
+
+	public void setGlicose(Integer glicose) {
+		this.glicose = glicose;
+	}
+
+	public Integer getPressao() {
+		return pressao;
+	}
+
+	public void setPressao(Integer pressao) {
+		this.pressao = pressao;
+	}
+
+	@ActionDescriptor(methodDisabled = "#{not autoEntityBackBean.formInEditMode}")
     public void adicionarSintoma() {
         ADDAcompanhamentoIdoso addM = new ADDAcompanhamentoIdoso();
         addM.setIdosoAddAcompanhamento(this);
@@ -425,4 +442,12 @@ public class AtendimentoIdoso implements Serializable {
         }
         return true;
     }
+
+	public String getSintomas() {
+		return sintomas;
+	}
+
+	public void setSintomas(String sintomas) {
+		this.sintomas = sintomas;
+	}
 }
