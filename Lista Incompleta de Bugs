@@ -4,3 +4,12 @@ Já que essa opção é apenas para vincular um paciente já existente a uma pri
 -Atendimento à Paciente: É possível adicionar um atendimento sem colocar o nome de nenhum paciente, oq é um erro.
 -Atendimento Médico: Não é possível add um procedimento. Erro de null point exception.  
 É possível adicionar a classe sem nenhuma informação.
+Exame mamografia: Não abre. Aviso: Property 'paciente' not found on type model.Paciente
+Atendimento à gestante: problema no 'paciente'.
+Saude da mulher: Erro na adição de novas consultas. 
+Notificação de óbito: erro, Pode ser adicionado para o futuro;
+ -> raça, corrigir opções.
+Nascidos vivos: Não é possivel gravar, pede campo inexistente.
+Aviso -> endereco : Informe o endereço
+Relatórios: O BPA não abre.
+-> E o cartão da mulher --está repleto de erros.-- Estava, agora nem mesmo referenciou a paciente.
