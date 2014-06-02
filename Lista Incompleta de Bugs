@@ -1,0 +1,6 @@
+BUGS:
+- Cadastrar prioridades: É possível clicar no ‘+’, o que é um erro. 
+Já que essa opção é apenas para vincular um paciente já existente a uma prioridade.
+-Atendimento à Paciente: É possível adicionar um atendimento sem colocar o nome de nenhum paciente, oq é um erro.
+-Atendimento Médico: Não é possível add um procedimento. Erro de null point exception.  
+É possível adicionar a classe sem nenhuma informação.
